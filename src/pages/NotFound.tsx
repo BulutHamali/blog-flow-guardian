@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { Home, Search } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 
@@ -28,16 +27,16 @@ const NotFound = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/">
-              <Button className="flex items-center gap-2">
+              <button className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors">
                 <Home className="h-4 w-4" />
                 Return Home
-              </Button>
+              </button>
             </Link>
             <Link to="/blog">
-              <Button variant="outline" className="flex items-center gap-2">
+              <button className="flex items-center gap-2 px-3 py-2 border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
                 <Search className="h-4 w-4" />
                 Browse Blog
-              </Button>
+              </button>
             </Link>
           </div>
         </div>

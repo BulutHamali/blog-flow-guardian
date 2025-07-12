@@ -1,6 +1,4 @@
 import { useAuth } from '@/contexts/AuthContext';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Shield, Users, FileText, BarChart3, Settings } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
 import { getAllPosts } from '@/lib/posts';
@@ -45,87 +43,86 @@ const Admin = () => {
                 Welcome to the admin dashboard. Manage your blog content and settings.
               </p>
             </div>
-            <Button variant="outline" onClick={logout}>
+            <button 
+              onClick={logout}
+              className="px-3 py-2 border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
+            >
               Sign Out
-            </Button>
+            </button>
           </div>
 
           {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {stats.map((stat, index) => (
-              <Card key={index}>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-muted-foreground">
+              <div key={index} className="bg-card rounded-lg border border-border p-6">
+                <div className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <h3 className="text-sm font-medium text-muted-foreground">
                     {stat.title}
-                  </CardTitle>
+                  </h3>
                   <stat.icon className="h-4 w-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
+                </div>
+                <div>
                   <div className="text-2xl font-bold text-foreground">{stat.value}</div>
                   <p className="text-xs text-muted-foreground">{stat.description}</p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
 
           {/* Main Content */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Recent Posts */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Recent Posts</CardTitle>
-                <CardDescription>
+            <div className="bg-card rounded-lg border border-border p-6">
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold">Recent Posts</h3>
+                <p className="text-muted-foreground">
                   Your latest blog posts
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {posts.slice(0, 5).map((post) => (
-                    <div key={post.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-                      <div>
-                        <h4 className="font-medium text-sm">{post.title}</h4>
-                        <p className="text-xs text-muted-foreground">
-                          {new Date(post.publishedAt).toLocaleDateString()}
-                        </p>
-                      </div>
-                      <div className="text-xs text-muted-foreground">
-                        Published
-                      </div>
+                </p>
+              </div>
+              <div className="space-y-4">
+                {posts.slice(0, 5).map((post) => (
+                  <div key={post.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                    <div>
+                      <h4 className="font-medium text-sm">{post.title}</h4>
+                      <p className="text-xs text-muted-foreground">
+                        {new Date(post.publishedAt).toLocaleDateString()}
+                      </p>
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                    <div className="text-xs text-muted-foreground">
+                      Published
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             {/* Quick Actions */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Quick Actions</CardTitle>
-                <CardDescription>
+            <div className="bg-card rounded-lg border border-border p-6">
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold">Quick Actions</h3>
+                <p className="text-muted-foreground">
                   Common administrative tasks
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 gap-3">
-                  <Button variant="outline" className="justify-start">
-                    <FileText className="mr-2 h-4 w-4" />
-                    Create New Post
-                  </Button>
-                  <Button variant="outline" className="justify-start">
-                    <BarChart3 className="mr-2 h-4 w-4" />
-                    View Analytics
-                  </Button>
-                  <Button variant="outline" className="justify-start">
-                    <Users className="mr-2 h-4 w-4" />
-                    Manage Users
-                  </Button>
-                  <Button variant="outline" className="justify-start">
-                    <Settings className="mr-2 h-4 w-4" />
-                    Site Settings
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                </p>
+              </div>
+              <div className="grid grid-cols-1 gap-3">
+                <button className="flex items-center justify-start gap-2 px-3 py-2 border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
+                  <FileText className="h-4 w-4" />
+                  Create New Post
+                </button>
+                <button className="flex items-center justify-start gap-2 px-3 py-2 border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
+                  <BarChart3 className="h-4 w-4" />
+                  View Analytics
+                </button>
+                <button className="flex items-center justify-start gap-2 px-3 py-2 border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
+                  <Users className="h-4 w-4" />
+                  Manage Users
+                </button>
+                <button className="flex items-center justify-start gap-2 px-3 py-2 border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
+                  <Settings className="h-4 w-4" />
+                  Site Settings
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Footer */}

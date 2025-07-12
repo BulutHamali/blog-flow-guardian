@@ -1,7 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
 import { getPostBySlug } from '@/lib/posts';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { ArrowLeft, Calendar, User } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
 
@@ -22,10 +20,10 @@ const BlogPost = () => {
                 The blog post you're looking for doesn't exist or has been moved.
               </p>
               <Link to="/blog">
-                <Button className="flex items-center gap-2">
+                <button className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors">
                   <ArrowLeft className="h-4 w-4" />
                   Back to Blog
-                </Button>
+                </button>
               </Link>
             </div>
           </div>
@@ -41,10 +39,10 @@ const BlogPost = () => {
           {/* Back Button */}
           <div className="mb-8">
             <Link to="/blog">
-              <Button variant="ghost" className="flex items-center gap-2">
+              <button className="flex items-center gap-2 px-3 py-2 text-muted-foreground hover:text-foreground transition-colors">
                 <ArrowLeft className="h-4 w-4" />
                 Back to Blog
-              </Button>
+              </button>
             </Link>
           </div>
 
@@ -76,16 +74,14 @@ const BlogPost = () => {
             </header>
 
             {/* Article Content */}
-            <Card>
-              <CardContent className="prose prose-slate max-w-none p-8">
-                <div 
-                  className="text-foreground leading-relaxed"
-                  style={{ whiteSpace: 'pre-line' }}
-                >
-                  {post.content}
-                </div>
-              </CardContent>
-            </Card>
+            <div className="bg-card rounded-lg border border-border p-8">
+              <div 
+                className="prose prose-slate max-w-none text-foreground leading-relaxed"
+                style={{ whiteSpace: 'pre-line' }}
+              >
+                {post.content}
+              </div>
+            </div>
 
             {/* Article Footer */}
             <footer className="mt-12 pt-8 border-t">
@@ -96,10 +92,10 @@ const BlogPost = () => {
                   </p>
                 </div>
                 <Link to="/blog">
-                  <Button variant="outline" className="flex items-center gap-2">
+                  <button className="flex items-center gap-2 px-3 py-2 border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
                     <ArrowLeft className="h-4 w-4" />
                     Back to Blog
-                  </Button>
+                  </button>
                 </Link>
               </div>
             </footer>

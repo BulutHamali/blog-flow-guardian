@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { Button } from '@/components/ui/button';
 import { LogIn, LogOut, BookOpen, Shield } from 'lucide-react';
 
 const Navbar = () => {
@@ -34,22 +33,20 @@ const Navbar = () => {
                   <Shield className="h-4 w-4" />
                   <span>Admin</span>
                 </Link>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
+                <button 
                   onClick={logout}
-                  className="flex items-center space-x-1"
+                  className="flex items-center space-x-1 px-3 py-2 border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-colors"
                 >
                   <LogOut className="h-4 w-4" />
                   <span>Log Out</span>
-                </Button>
+                </button>
               </div>
             ) : (
               <Link to="/login">
-                <Button variant="outline" size="sm" className="flex items-center space-x-1">
+                <button className="flex items-center space-x-1 px-3 py-2 border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
                   <LogIn className="h-4 w-4" />
                   <span>Log In</span>
-                </Button>
+                </button>
               </Link>
             )}
           </div>

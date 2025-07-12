@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 import { getAllPosts } from '@/lib/posts';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
 
@@ -25,8 +23,8 @@ const BlogIndex = () => {
           {/* Blog Posts Grid */}
           <div className="grid gap-8 md:gap-12">
             {posts.map((post) => (
-              <Card key={post.id} className="group hover:shadow-lg transition-all duration-300">
-                <CardHeader>
+              <div key={post.id} className="group hover:shadow-lg transition-all duration-300 bg-card rounded-lg border border-border p-6">
+                <div className="mb-6">
                   <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
@@ -37,26 +35,24 @@ const BlogIndex = () => {
                       <span>{post.author}</span>
                     </div>
                   </div>
-                  <CardTitle className="text-2xl mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-2xl font-semibold mb-2 group-hover:text-primary transition-colors">
                     <Link to={`/blog/${post.slug}`} className="flex items-center justify-between">
                       {post.title}
                       <ArrowRight className="h-5 w-5 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </Link>
-                  </CardTitle>
-                  <CardDescription className="text-base leading-relaxed">
+                  </h3>
+                  <p className="text-base leading-relaxed text-muted-foreground">
                     {post.excerpt}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Link 
-                    to={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors"
-                  >
-                    Read more
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </CardContent>
-              </Card>
+                  </p>
+                </div>
+                <Link 
+                  to={`/blog/${post.slug}`}
+                  className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors"
+                >
+                  Read more
+                  <ArrowRight className="ml-1 h-4 w-4" />
+                </Link>
+              </div>
             ))}
           </div>
 

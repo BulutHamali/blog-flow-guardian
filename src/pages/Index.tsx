@@ -1,6 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { BookOpen, Code, Users, Zap, ArrowRight } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
 
@@ -44,15 +42,15 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/blog">
-                <Button size="lg" className="flex items-center gap-2">
+                <button className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors">
                   Explore Blog
                   <ArrowRight className="h-4 w-4" />
-                </Button>
+                </button>
               </Link>
               <Link to="/login">
-                <Button variant="outline" size="lg">
+                <button className="px-6 py-3 border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-colors">
                   Admin Login
-                </Button>
+                </button>
               </Link>
             </div>
           </div>
@@ -71,17 +69,13 @@ const Index = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
-                <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="mx-auto mb-4 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                      <feature.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">{feature.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription>{feature.description}</CardDescription>
-                  </CardContent>
-                </Card>
+                <div key={index} className="text-center hover:shadow-lg transition-shadow bg-card rounded-lg border border-border p-6">
+                  <div className="mx-auto mb-4 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                    <feature.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </div>
               ))}
             </div>
           </div>
@@ -97,10 +91,10 @@ const Index = () => {
               Join thousands of developers who trust DevBlog for their learning journey.
             </p>
             <Link to="/blog">
-              <Button size="lg" className="flex items-center gap-2 mx-auto">
+              <button className="flex items-center gap-2 mx-auto px-6 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors">
                 Start Reading
                 <ArrowRight className="h-4 w-4" />
-              </Button>
+              </button>
             </Link>
           </div>
         </section>
